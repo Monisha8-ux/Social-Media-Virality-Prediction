@@ -20,12 +20,12 @@ model = load_model()
 # -------------------------------
 # TITLE
 # -------------------------------
-st.title("🚀 Social Media Virality Predictor")
+st.title("Social Media Virality Predictor")
 
 # -------------------------------
 # INPUT SECTION
 # -------------------------------
-st.subheader("📊 Enter Post Details")
+st.subheader("Enter Post Details")
 
 col1, col2, col3 = st.columns(3)
 
@@ -43,7 +43,7 @@ st.markdown("---")
 # -------------------------------
 # SLIDERS
 # -------------------------------
-st.subheader("🔥 Engagement Metrics")
+st.subheader("Engagement Metrics")
 
 likes = st.slider("Likes", 0, 500000, 1000)
 views = st.slider("Views", 1, 2000000, 10000)
@@ -53,20 +53,20 @@ sentiment = st.slider("Sentiment Score", -1.0, 1.0, 0.0)
 
 st.markdown("---")
 if likes > views:
-    st.error("❌ Likes cannot be greater than Views")
+    st.error("Likes cannot be greater than Views")
     st.stop()
 
 if shares > views:
-    st.error("❌ Shares cannot be greater than Views")
+    st.error("Shares cannot be greater than Views")
     st.stop()
 
 if comments > views:
-    st.error("❌ Comments cannot be greater than Views")
+    st.error("Comments cannot be greater than Views")
     st.stop()
 # -------------------------------
 # PREDICTION
 # -------------------------------
-if st.button("🚀 Predict Virality"):
+if st.button("Predict Virality"):
 
     # -------------------------------
     # FEATURE ENGINEERING
@@ -117,20 +117,20 @@ if st.button("🚀 Predict Virality"):
     st.markdown("---")
 
     if y_prob > 0.7:
-        st.success(f"🔥 High Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
+        st.success(f"High Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
 
     elif y_prob > 0.4:
-        st.info(f"⚡ Moderate Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
+        st.info(f"Moderate Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
 
     else:
-        st.warning(f"⚠️ Low Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
+        st.warning(f"Low Viral Potential\n\nEstimated Chance: **{round(y_prob*100,2)}%**")
 
     st.progress(int(y_prob * 100))
 
     # -------------------------------
     # DEBUG SECTION (VERY IMPORTANT)
     # -------------------------------
-    with st.expander("🔍 Debug Info"):
+    with st.expander("Debug Info"):
         st.write("Views (log):", views_log)
         st.write("Engagement Rate:", engagement_rate)
         st.write("Raw Probability:", y_prob)
